@@ -1,7 +1,8 @@
 FROM bearstech/debian:stretch
 
-RUN apt-get update && \
-        apt-get install -y \
+RUN set -eux \
+    &&  apt-get update \
+    &&  apt-get install -y --no-install-recommends \
             curl \
             ca-certificates \
             build-essential \
@@ -9,8 +10,11 @@ RUN apt-get update && \
             cmake \
             libre-dev \
             fakeroot \
-    && rm -rf /var/lib/apt/lists/*
+    &&  apt-get clean \
+    &&  rm -rf /var/lib/apt/lists/*
 
 COPY make.sh /usr/local/bin/make_fluentbit.sh
+
 WORKDIR /usr/src/
-CMD make_fluentbit.sh
+
+CMD ["make_fluentbit.sh"]
