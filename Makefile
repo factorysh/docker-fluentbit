@@ -7,6 +7,9 @@ pull:
 push:
 	docker push bearstech/fluentbit
 
+remove_image:
+	docker rmi bearstech/fluentbit
+
 dl_deb: deb/td-agent-bit_${FLUENTBIT_VERSION}_amd64.deb
 
 tool:
