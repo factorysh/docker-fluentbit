@@ -1,11 +1,10 @@
-FROM bearstech/debian:stretch
+FROM bearstech/debian-dev:stretch
 
 RUN set -eux \
     &&  apt-get update \
     &&  apt-get install -y --no-install-recommends \
             curl \
             ca-certificates \
-            build-essential \
             debhelper \
             cmake \
             libre-dev \

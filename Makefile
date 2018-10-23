@@ -3,6 +3,7 @@ FLUENTBIT_VERSION := 0.12.19
 
 pull:
 	docker pull bearstech/debian:stretch
+	docker pull bearstech/debian-dev:stretch
 
 push:
 	docker push bearstech/fluentbit
