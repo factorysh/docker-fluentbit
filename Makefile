@@ -11,8 +11,6 @@ push:
 remove_image:
 	docker rmi bearstech/fluentbit
 
-dl_deb: deb/td-agent-bit_${FLUENTBIT_VERSION}_amd64.deb
-
 tool:
 	docker build \
 		-t fluentbit-dev \
@@ -27,9 +25,7 @@ deb/td-agent-bit_${FLUENTBIT_VERSION}_amd64.deb:
 		-v `pwd`/deb:/opt/ \
 		fluentbit-dev
 
-build: fluentbit
-
-fluentbit: dl_deb
+build: deb/td-agent-bit_${FLUENTBIT_VERSION}_amd64.deb
 	docker build \
 		-t bearstech/fluentbit \
 		--build-arg FLUENTBIT_VERSION=${FLUENTBIT_VERSION} \
