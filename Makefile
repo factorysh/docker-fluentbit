@@ -31,5 +31,7 @@ build: deb/td-agent-bit_${FLUENTBIT_VERSION}_amd64.deb
 		--build-arg FLUENTBIT_VERSION=${FLUENTBIT_VERSION} \
 		.
 
+down:
+
 tests:
 	@echo "no functionnal tests"
