@@ -11,4 +11,7 @@ RUN set -eux \
 
 USER fluentd
 
+ARG GIT_VERSION
+LABEL com.bearstech.source.fluentbit=https://github.com/factorysh/docker-fluentbit/commit/${GIT_VERSION}
+
 CMD ["/opt/td-agent-bit/bin/td-agent-bit", "-c", "/etc/td-agent-bit/td-agent-bit.conf"]
