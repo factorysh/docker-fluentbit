@@ -14,4 +14,7 @@ USER fluentd
 ARG GIT_VERSION
 LABEL com.bearstech.source.fluentbit=https://github.com/factorysh/docker-fluentbit/commit/${GIT_VERSION}
 
+ARG GIT_DATE
+LABEL com.bearstech.date.fluentbit=${GIT_DATE}
+
 CMD ["/opt/td-agent-bit/bin/td-agent-bit", "-c", "/etc/td-agent-bit/td-agent-bit.conf"]
