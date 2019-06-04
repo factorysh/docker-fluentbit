@@ -1,7 +1,15 @@
-FLUENTBIT_MAJOR_VERSION := 0.12
-FLUENTBIT_VERSION := 0.12.19
+FLUENTBIT_MAJOR_VERSION := 1.1
+FLUENTBIT_VERSION := 1.1.2
 GIT_VERSION := $(shell git rev-parse HEAD)
 GIT_DATE := $(shell git show -s --format=%ci HEAD)
+
+build: deb/td-agent-bit_${FLUENTBIT_VERSION}_amd64.deb
+	docker build \
+		-t bearstech/fluentbit \
+		--build-arg FLUENTBIT_VERSION=${FLUENTBIT_VERSION} \
+		--build-arg GIT_VERSION=${GIT_VERSION} \
+		--build-arg GIT_DATE="${GIT_DATE}" \
+		.
 
 pull:
 	docker pull bearstech/debian:stretch
@@ -26,14 +34,6 @@ deb/td-agent-bit_${FLUENTBIT_VERSION}_amd64.deb:
 		-e FLUENTBIT_MAJOR_VERSION=${FLUENTBIT_MAJOR_VERSION} \
 		-v `pwd`/deb:/opt/ \
 		fluentbit-dev
-
-build: deb/td-agent-bit_${FLUENTBIT_VERSION}_amd64.deb
-	docker build \
-		-t bearstech/fluentbit \
-		--build-arg FLUENTBIT_VERSION=${FLUENTBIT_VERSION} \
-		--build-arg GIT_VERSION=${GIT_VERSION} \
-		--build-arg GIT_DATE="${GIT_DATE}" \
-		.
 
 down:
 
