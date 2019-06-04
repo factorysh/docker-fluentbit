@@ -7,8 +7,11 @@ RUN set -eux \
             ca-certificates \
             debhelper \
             cmake \
+            libboost-atomic-dev \
+            libevent-dev \
             libre-dev \
             fakeroot \
+            valgrind \
     &&  apt-get clean \
     &&  rm -rf /var/lib/apt/lists/*
 
