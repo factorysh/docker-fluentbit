@@ -2,7 +2,9 @@ FROM bearstech/debian:stretch
 
 ARG FLUENTBIT_VERSION
 
-RUN apt-get update \
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+RUN set -eux \
+    && apt-get update \
     && apt-get install -y --no-install-recommends \
                   apt-transport-https \
                   ca-certificates \
