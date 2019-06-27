@@ -19,9 +19,14 @@ tool:
 		-f Dockerfile.tool \
 		.
 
-deb/td-agent-bit_${FLUENTBIT_VERSION}_amd64.deb:
+deb:
+	mkdir -p deb
+
+deb/td-agent-bit_${FLUENTBIT_VERSION}_amd64.deb: deb
 	make -C . tool
+	chmod 777 deb
 	docker run \
+		-u `id -u` \
 		-e FLUENTBIT_VERSION=${FLUENTBIT_VERSION} \
 		-e FLUENTBIT_MAJOR_VERSION=${FLUENTBIT_MAJOR_VERSION} \
 		-v `pwd`/deb:/opt/ \

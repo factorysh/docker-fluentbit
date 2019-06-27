@@ -10,7 +10,8 @@ RUN set -eux \
             libre-dev \
             fakeroot \
     &&  apt-get clean \
-    &&  rm -rf /var/lib/apt/lists/*
+    &&  rm -rf /var/lib/apt/lists/* \
+    &&  chmod 777 /usr/src
 
 COPY make.sh /usr/local/bin/make_fluentbit.sh
 
