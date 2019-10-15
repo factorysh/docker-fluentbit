@@ -11,10 +11,22 @@ RUN set -eux \
 
 USER fluentd
 
-ARG GIT_VERSION
-LABEL com.bearstech.source.fluentbit=https://github.com/factorysh/docker-fluentbit/commit/${GIT_VERSION}
 
-ARG GIT_DATE
-LABEL com.bearstech.date.fluentbit=${GIT_DATE}
 
 CMD ["/opt/td-agent-bit/bin/td-agent-bit", "-c", "/etc/td-agent-bit/td-agent-bit.conf"]
+
+# generated labels
+
+ARG GIT_VERSION
+ARG GIT_DATE
+ARG BUILD_DATE
+
+LABEL com.bearstech.image.revision_date=${GIT_DATE}
+
+LABEL org.opencontainers.image.authors=Bearstech
+
+LABEL org.opencontainers.image.revision=${GIT_VERSION}
+LABEL org.opencontainers.image.created=${BUILD_DATE}
+
+LABEL org.opencontainers.image.url=https://github.com/factorysh/docker-fluentbit
+LABEL org.opencontainers.image.source=https://github.com/factorysh/docker-fluentbit/blob/${GIT_VERSION}/Dockerfile
