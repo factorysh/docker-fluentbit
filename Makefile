@@ -1,4 +1,5 @@
 
+include Makefile.lint
 include Makefile.build_args
 
 FLUENTBIT_MAJOR_VERSION := 0.12
