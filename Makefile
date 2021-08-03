@@ -45,4 +45,6 @@ build: deb/td-agent-bit_${FLUENTBIT_VERSION}_amd64.deb
 down:
 
 tests:
-	@echo "no functionnal tests"
+	docker-compose -f tests_fluentbit/docker-compose.yml up -d fluentd
+	docker-compose -f tests_fluentbit/docker-compose.yml run test
+	docker-compose -f tests_fluentbit/docker-compose.yml logs fluentd
